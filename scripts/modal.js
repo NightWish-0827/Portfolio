@@ -70,7 +70,7 @@ function openProjectModal(id) {
     </div>
     <div class="modal-text-section">
       <h3>프로젝트 개요</h3>
-      <p>${p.overview}</p>
+      <p>${p.overview.replace(/\n/g, '<br>')}</p>
     </div>
     ${p.details.length ? `
       <div class="modal-text-section">

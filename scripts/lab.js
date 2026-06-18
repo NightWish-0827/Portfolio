@@ -3,39 +3,89 @@
 const LAB_INITIAL_COUNT = 4;
 let labExpanded = false;
 
+const BADGE_META = {
+  active: { label: '최근 업데이트', cls: 'active' },
+  hot:    { label: 'Hot',          cls: 'hot'    },
+  stable: { label: 'Stable',       cls: 'stable' },
+  beta:   { label: 'Beta',         cls: 'beta'   },
+  wiki:   { label: '공식 위키',     cls: 'wiki'   },
+};
+
+const FIRE_PARTICLES = [
+  { x: '12%', size: '4px', delay: '0s',    dur: '2.4s' },
+  { x: '28%', size: '3px', delay: '0.6s',  dur: '2.1s' },
+  { x: '48%', size: '5px', delay: '1.1s',  dur: '2.7s' },
+  { x: '65%', size: '3px', delay: '0.3s',  dur: '2.0s' },
+  { x: '80%', size: '4px', delay: '1.6s',  dur: '2.5s' },
+  { x: '38%', size: '3px', delay: '0.9s',  dur: '2.2s' },
+];
+
 function renderOpenSource() {
   const grid = document.getElementById('labGrid');
   if (!grid) return;
 
-  grid.innerHTML = openSourceData.map((item, i) => `
-    <div class="dir-card ${i >= LAB_INITIAL_COUNT ? 'hide-item lab-extra' : ''}"
+  grid.innerHTML = openSourceData.map((item, i) => {
+    const badges     = item.badges || [];
+    const isFeatured = badges.includes('hot');
+    const badgesHtml = badges
+      .filter(b => BADGE_META[b])
+      .map(b => `<span class="dir-badge dir-badge--${BADGE_META[b].cls}">${BADGE_META[b].label}</span>`)
+      .join('');
+    const particlesHtml = isFeatured
+      ? FIRE_PARTICLES.map(p =>
+          `<span class="fire-particle" style="--fp-x:${p.x};--fp-size:${p.size};--fp-delay:${p.delay};--fp-dur:${p.dur}"></span>`
+        ).join('')
+      : '';
+    const cardClick = item.docsUrl
+      ? `onclick="window.open('${item.docsUrl}','_blank')" style="cursor:pointer;"`
+      : '';
+
+    return `
+    <div class="dir-card${isFeatured ? ' featured' : ''} ${i >= LAB_INITIAL_COUNT ? 'hide-item lab-extra' : ''}"
          data-lab-category="${item.category}"
-         data-lab-text="${(item.title + ' ' + item.desc + ' ' + item.tags.join(' ')).toLowerCase()}">
+         data-lab-text="${(item.title + ' ' + item.desc + ' ' + item.tags.join(' ')).toLowerCase()}"
+         ${cardClick}>
+      ${particlesHtml}
       <div class="dir-card-header">
         <div class="dir-card-title-area">
           <span class="dir-card-badge-dot"></span>
           <h4>${item.title}</h4>
+          ${item.version ? `<span class="dir-version">${item.version}</span>` : ''}
         </div>
-        <a class="dir-link-btn" href="${item.url}" target="_blank" rel="noopener" aria-label="GitHub 열기">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <path d="M7 17L17 7M17 7H7M17 7v10"/>
-          </svg>
-        </a>
+        <div class="dir-card-actions">
+          ${item.docsUrl ? `
+          <a class="dir-link-btn dir-docs-btn" href="${item.docsUrl}" target="_blank" rel="noopener"
+             aria-label="한국어 문서" onclick="event.stopPropagation()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>` : ''}
+          <a class="dir-link-btn dir-github-btn" href="${item.url}" target="_blank" rel="noopener"
+             aria-label="GitHub 열기" onclick="event.stopPropagation()">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
       </div>
-      <p class="dir-card-desc">${item.desc}</p>
+      ${badgesHtml ? `<div class="dir-badges">${badgesHtml}</div>` : ''}
+      <p class="dir-card-desc">${item.desc.replace(/\n/g, '<br>')}</p>
       <div class="dir-card-tags">
         ${item.tags.map(t => `<span>${t}</span>`).join('')}
       </div>
       ${item.wikiUrl ? `
-      <a class="dir-wiki-btn" href="${item.wikiUrl}" target="_blank" rel="noopener">
+      <a class="dir-wiki-btn" href="${item.wikiUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
           <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
         </svg>
         Wiki 문서 보기
       </a>` : ''}
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 
   updateLabMoreBtn();
   document.getElementById('labMoreBtn')?.addEventListener('click', toggleLabMore);

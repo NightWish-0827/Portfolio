@@ -113,7 +113,7 @@ const projectsData = [
   {
     id: 'forgemaster',
     category: 'lab',
-    year: null,
+    year: 2026,
     title: 'Forge Master Cloning',
     catLabel: '1인 개발',
     desc: '제작 SDK의 실전 검증 프로젝트',
@@ -138,7 +138,7 @@ const projectsData = [
   {
     id: 'errorlog',
     category: 'games',
-    year: null,
+    year: 2019,
     title: 'Error Log',
     catLabel: '1인 개발',
     desc: 'Windows XP 컨셉의 2D 리듬 탄막 게임.',
@@ -173,7 +173,7 @@ const projectsData = [
   {
     id: 'gravityjump',
     category: 'games',
-    year: null,
+    year: 2018,
     title: 'VVVVVV — Gravity Jump',
     catLabel: 'VVVVVV Fan Game Team',
     desc: 'VVVVVV DevSup 공식 포럼 합동 프로젝트. VVVVVV 모작 팬 게임',
