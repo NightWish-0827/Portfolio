@@ -11,11 +11,12 @@ function renderProjects() {
         <img class="project-thumb" src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async"
              style="object-position:${p.thumbPosition ?? 'center'};">
         <div class="project-thumb-overlay"></div>
+        ${p.year ? `<span class="project-year">${p.year}</span>` : ''}
       </div>` : ''}
       <div class="project-card-meta">
         <p class="project-cat">${p.catLabel}</p>
         <h3>${p.title}</h3>
-        <p class="project-desc">${p.desc}</p>
+        <p class="project-desc">${p.desc.replace(/\n/g, '<br>')}</p>
         <div class="project-stack">
           ${p.stack.map(s => `<span>${s}</span>`).join('')}
         </div>
@@ -41,16 +42,22 @@ function renderProjects() {
 }
 
 function initProjectFilters() {
+  const applyFilter = filter => {
+    document.querySelectorAll('#projectsGrid .project-card').forEach(card => {
+      card.classList.toggle('hide', filter !== 'all' && card.dataset.category !== filter);
+    });
+  };
+
+  /* 초기 상태: 활성 버튼 필터 적용 */
+  const activeBtn = document.querySelector('.portfolio-filters [data-filter].active');
+  if (activeBtn) applyFilter(activeBtn.dataset.filter);
+
   document.querySelectorAll('.portfolio-filters [data-filter]').forEach(btn => {
     btn.addEventListener('click', () => {
       btn.closest('.portfolio-filters').querySelectorAll('[data-filter]')
          .forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('#projectsGrid .project-card').forEach(card => {
-        card.classList.toggle('hide', filter !== 'all' && card.dataset.category !== filter);
-      });
+      applyFilter(btn.dataset.filter);
     });
   });
 }

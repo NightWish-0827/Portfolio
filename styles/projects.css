@@ -114,6 +114,22 @@
 
 .project-thumb-overlay { display: none; }
 
+.project-year {
+  position     : absolute;
+  top          : 10px;
+  right        : 10px;
+  padding      : 3px 9px;
+  background   : rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  border       : 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  font-size    : 0.72rem;
+  font-weight  : 600;
+  color        : rgba(255,255,255,0.85);
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+
 .project-card:hover .project-thumb { transform: scale(1.04); }
 
 /* ── 모달 로컬 영상 ── */
