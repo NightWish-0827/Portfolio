@@ -88,21 +88,39 @@
 
 /* 모바일 열림 상태 */
 @media (max-width: 768px) {
-  .menu-toggle { display: flex; }
+  .menu-toggle {
+    display : flex;
+    z-index : 1002; /* nav-links(1001)보다 위 — X 버튼 항상 접근 가능 */
+  }
 
   .nav-links {
-    position  : fixed;
-    top       : -100vh; left: 0;
-    width     : 100vw; height: 100vh;
-    background: rgba(9,9,11,0.98);
+    position      : fixed;
+    top           : 0; left: 0;
+    width         : 100vw; height: 100vh;
+    background    : rgba(9,9,11,0.98);
     flex-direction: column;
     justify-content: center;
-    gap       : 36px;
-    transition: top var(--duration-base) var(--ease-out-expo);
-    z-index   : 999;
+    gap           : 36px;
+    z-index       : 1001; /* navbar pill(1000)보다 위 */
+    /* 비활성: 보이지 않게, 전환 불필요 시 pointer-events 차단 */
+    opacity        : 0;
+    pointer-events : none;
+    transition     : opacity var(--duration-base) var(--ease-out-expo);
   }
-  .nav-links.active { top: 0; }
+  .nav-links.active {
+    opacity       : 1;
+    pointer-events: auto;
+  }
   .nav-links a { font-size: 1.25rem; }
+
+  /* 메뉴 열릴 때 pill 배경 제거 — X 버튼만 남도록 */
+  .navbar.active {
+    background       : transparent;
+    border-color     : transparent;
+    box-shadow       : none;
+    backdrop-filter  : none;
+    -webkit-backdrop-filter: none;
+  }
 
   .navbar.active .menu-toggle span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
