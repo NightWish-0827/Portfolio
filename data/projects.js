@@ -48,7 +48,7 @@ const projectsData = [
     desc: 'Stove 정식 출시 및 네오위즈 사옥 1층 전시작. 2D 플랫포머 1 VS 1 대전 게임',
     stack: ['Unity', 'Photon Fusion 2.0', 'C#', 'PC', 'Multiplayer', 'FMOD'],
     thumb: 'assets/images/arryarr-teaser.png',
-    videoUrl: 'https://www.youtube.com/embed/nm_4CSCKa8A',
+    videoUrl: 'https://www.youtube.com/embed/nm_4CSCKa8A?si=j_pEDkyX4xjHidP5',
     localVideoUrl: null,
     gallery: [],
     githubUrl: null,

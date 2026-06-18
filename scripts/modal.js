@@ -39,22 +39,9 @@ function openProjectModal(id) {
   if (!p) return;
 
   const mediaHtml = p.videoUrl
-    ? (() => {
-        /* embed URL에서 video ID 추출 → 썸네일 + 외부 링크 */
-        const vid      = p.videoUrl.match(/embed\/([^?]+)/)?.[1] ?? '';
-        const watchUrl = `https://www.youtube.com/watch?v=${vid}`;
-        const thumb    = `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`;
-        return `<a class="modal-yt-thumb" href="${watchUrl}" target="_blank" rel="noopener">
-                  <img src="${thumb}" alt="${p.title} YouTube thumbnail">
-                  <div class="modal-yt-play">
-                    <svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M66.5 7.8a8.5 8.5 0 0 0-6-6C55.8 0 34 0 34 0S12.2 0 7.5 1.8a8.5 8.5 0 0 0-6 6C0 11.5 0 24 0 24s0 12.5 1.5 16.2a8.5 8.5 0 0 0 6 6C12.2 48 34 48 34 48s21.8 0 26.5-1.8a8.5 8.5 0 0 0 6-6C68 36.5 68 24 68 24s0-12.5-1.5-16.2z" fill="#ff0000"/>
-                      <path d="M27 34l18-10-18-10v20z" fill="#fff"/>
-                    </svg>
-                  </div>
-                  <span class="modal-yt-label">YouTube에서 보기</span>
-                </a>`;
-      })()
+    ? `<div class="modal-video-wrapper">
+         <iframe src="${p.videoUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+       </div>`
     : p.localVideoUrl
       ? `<div class="modal-video-wrapper${p.videoPortrait ? ' portrait' : ''}">
            <video controls preload="metadata">
