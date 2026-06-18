@@ -1,0 +1,112 @@
+/* talab.css — TA Lab */
+
+.ta-grid {
+  display              : grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap                  : 30px;
+}
+
+.ta-card {
+  display       : flex;
+  flex-direction: column;
+  height        : 100%;
+  overflow      : hidden;
+  cursor        : pointer;
+  will-change   : transform;
+  transition    : transform     var(--duration-base) var(--ease-out-expo),
+                  border-color  var(--duration-base) var(--ease-out-expo),
+                  box-shadow    var(--duration-base) var(--ease-out-expo);
+}
+
+.ta-card.hide { display: none; }
+
+.ta-card:hover {
+  transform   : translateY(-5px);
+  box-shadow  : 0 12px 30px rgba(0,0,0,0.6);
+  border-color: var(--glass-border-focus);
+}
+
+/* 썸네일 */
+.ta-thumb-wrapper {
+  position  : relative;
+  width     : 100%;
+  aspect-ratio: 16 / 9;
+  overflow  : hidden;
+  background: var(--bg-dark-700);
+}
+
+.ta-thumb {
+  width      : 100%; height: 100%;
+  object-fit : cover;
+  transition : transform 0.6s var(--ease-out-expo);
+  will-change: transform;
+}
+
+.ta-card:hover .ta-thumb { transform: scale(1.05); }
+
+/* 썸네일 없을 때 플레이스홀더 */
+.ta-thumb-placeholder {
+  width      : 100%; height: 100%;
+  background : linear-gradient(135deg, #1c1c1f 0%, #27272a 60%, #18181b 100%);
+  display    : flex;
+  align-items: center;
+  justify-content: center;
+  transition : transform 0.6s var(--ease-out-expo);
+  will-change: transform;
+}
+
+.ta-card:hover .ta-thumb-placeholder { transform: scale(1.05); }
+
+.ta-thumb-placeholder span {
+  font-family   : var(--font-heading);
+  font-size     : 0.7rem;
+  font-weight   : 600;
+  color         : var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* 플레이 오버레이 */
+.ta-play-overlay {
+  position  : absolute;
+  inset     : 0;
+  background: rgba(0,0,0,0.4);
+  display   : flex;
+  align-items: center;
+  justify-content: center;
+  opacity   : 0;
+  transition: opacity 0.3s ease;
+}
+
+.ta-card:hover .ta-play-overlay { opacity: 1; }
+
+.ta-play-overlay svg {
+  width     : 48px; height: 48px;
+  color     : #ffffff;
+  filter    : drop-shadow(0 2px 10px rgba(255,255,255,0.3));
+  transform : scale(0.8);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ta-card:hover .ta-play-overlay svg { transform: scale(1); }
+
+/* 카드 본문 */
+.ta-card-meta {
+  padding       : 24px;
+  display       : flex;
+  flex-direction: column;
+  flex-grow     : 1;
+}
+
+.ta-card-meta h3 {
+  font-family  : var(--font-heading);
+  font-size    : 1.1rem;
+  font-weight  : 700;
+  margin-bottom: 10px;
+}
+
+.ta-card-meta .project-desc { margin-bottom: 0; }
+
+/* 반응형 */
+@media (max-width: 1024px) { .ta-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 768px)  { .ta-grid { grid-template-columns: 1fr; } }

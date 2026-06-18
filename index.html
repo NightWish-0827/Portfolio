@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>황준혁 | Unity Client Engineer & Tech Supports</title>
+  <meta name="description" content="황준혁 포트폴리오 — Unity Client Engineer & Tech Supports. 게임 개발, 기술 지원, 에디터 툴, 오픈소스 SDK.">
+  <meta name="author" content="황준혁">
+  <meta property="og:title" content="황준혁 | Unity Client Engineer & Tech Supports">
+  <meta property="og:description" content="집요함으로 게임을 제작합니다.">
+  <meta property="og:type" content="website">
+
+  <!-- 🎨 디자인 토큰 (색상·폰트 수정 → styles/design.css) -->
+  <link rel="stylesheet" href="styles/design.css">
+  <!-- 기반 -->
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <!-- 섹션별 -->
+  <link rel="stylesheet" href="styles/navbar.css">
+  <link rel="stylesheet" href="styles/hero.css">
+  <link rel="stylesheet" href="styles/sections.css">
+  <link rel="stylesheet" href="styles/projects.css">
+  <link rel="stylesheet" href="styles/lab.css">
+  <link rel="stylesheet" href="styles/contact.css">
+  <!-- 애니메이션 (마지막 로드) -->
+  <link rel="stylesheet" href="styles/animations.css">
+</head>
+
+<body>
+
+  <!-- =============================
+     NAVBAR
+     ============================= -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="nav-logo">NightWish Lab</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#philosophy" data-nav="philosophy">Philosophy</a></li>
+      <li><a href="#skills" data-nav="skills">Skills</a></li>
+      <li><a href="#experience" data-nav="experience">Experience</a></li>
+      <li><a href="#projects" data-nav="projects">Projects</a></li>
+      <li><a href="#opensource" data-nav="opensource">Open Source</a></li>
+      <li><a href="#contact" data-nav="contact">Contact</a></li>
+    </ul>
+    <div class="menu-toggle" id="menuToggle" aria-label="메뉴" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- =============================
+     HERO
+     ============================= -->
+  <section id="hero" class="hero">
+    <div class="hero-video-bg">
+      <!-- preload="none" → 페이지 로드 시 비디오 네트워크 요청 차단 -->
+      <video autoplay muted loop playsinline preload="metadata" poster="assets/hero_poster.jpg">
+        <source src="assets/videos/background_video.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+    <div class="hero-bg-gradient"></div>
+
+    <div class="hero-content">
+      <p class="hero-tagline">Unity Client Engineer &amp; Tech Supports</p>
+      <h1 class="hero-title"><span>황준혁</span></h1>
+      <p class="hero-desc">
+        개발자가 게임 개발을 즐기고 있을 때, 가장 재밌는 게임이 나온다고 생각합니다.<br>
+        게임 개발을 할 때 가장 즐거운 개발자. 황준혁입니다.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">Unity</span>
+        <span class="hero-tag">C#</span>
+        <span class="hero-tag">Client</span>
+        <span class="hero-tag">Tech Supports</span>
+        <span class="hero-tag">Optimization</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+        <a href="#contact" class="btn btn-secondary">Contact</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/NightWish-0827" target="_blank" rel="noopener" class="social-icon"
+          aria-label="GitHub">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+        </a>
+        <a href="https://nightwish-0827.github.io" target="_blank" rel="noopener" class="social-icon" aria-label="블로그">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-mouse">
+      <div class="scroll-mouse-dot"></div>
+    </div>
+  </div>
+  </section>
+
+  <!-- =============================
+     PHILOSOPHY
+     ============================= -->
+  <section id="philosophy" class="section-padding fade-in-section">
+    <div class="container">
+      <h2 class="section-title">Philosophy</h2>
+      <div class="philosophy-grid">
+
+        <div class="phil-card">
+          <div class="phil-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+            </svg>
+          </div>
+          <h3>게임 로직</h3>
+          <p>기획의 의도를 기술적 완성도로 치환합니다. 단순히 기능을 구현하는 데 그치지 않고, <br> 데이터와 로직을 철저히 분리하여 유연하고 확장 가능한 시스템을 설계합니다.</p>
+        </div>
+
+        <div class="phil-card">
+          <div class="phil-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3>기술 지원</h3>
+          <p>팀에서 필요로 하는 개발 도구를 제작합니다. 에디터 확장을 통한 생산성 도구 개발, <br> 유연한 아키텍처 프레임워크 구축 등 <br>팀에 도움이 되는 방향으로 개발합니다.</p>
+        </div>
+
+        <div class="phil-card">
+          <div class="phil-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
+            </svg>
+          </div>
+          <h3>최적화</h3>
+          <p>단순한 최적화를 진행하는 것이 아닌, <br> 그로 인한 등가교환을 이해하며 개발합니다. GC 관리, 메모리 관리 등의 병목 개선부터 외부 라이브러리 등 폭 넓은 시도를 합니다.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================
+     SKILLS  (data/skills.js 에서 수정)
+     ============================= -->
+  <section id="skills" class="section-padding fade-in-section">
+    <div class="container">
+      <h2 class="section-title">Tech Stack</h2>
+      <div class="tech-grid" id="skillsGrid">
+        <!-- scripts/skills.js 가 data/skills.js 를 읽어 렌더링 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================
+     EXPERIENCE
+     ============================= -->
+  <section id="experience" class="section-padding fade-in-section">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-badge"></div>
+          <div class="timeline-content glass-panel">
+            <div class="timeline-body">
+              <p class="timeline-date">2025.09 ~ 2025.12</p>
+              <h3>주식회사 111퍼센트</h3>
+              <p class="timeline-role">Unity 개발자 / 클라이언트</p>
+              <p>두 개의 프로젝트 단독 클라이언트 개발<br>
+                DSP 오디오 시퀀스 기반의 모바일 리듬게임<br>
+                DSP 최적화 및 Python, Json을 활용한 채보 자동화<br>
+                사내 과거 프로젝트 IP를 활용한 핵앤슬래시 게임 개발</p>
+            </div>
+            <div class="timeline-logo">
+              <img src="assets/logos/111percent.png" alt="111퍼센트" loading="lazy"
+                onerror="this.parentElement.style.display='none'">
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-badge"></div>
+          <div class="timeline-content glass-panel">
+            <div class="timeline-body">
+              <p class="timeline-date">2025.03 ~ </p>
+              <h3>와르르랩</h3>
+              <p class="timeline-role">Unity 개발자 / 팀장 · 각종 인디게임 구상 및 제작</p>
+              <p>모바일 하이퍼 캐주얼 '돌찡구' 개발 중<br>
+                BMS 오디오 시스템 기반의 'PR1, PR2' 개발</p>
+            </div>
+            <div class="timeline-logo">
+              <img src="assets/logos/warrurrab.png" alt="와르르랩" loading="lazy"
+                onerror="this.parentElement.style.display='none'">
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-badge"></div>
+          <div class="timeline-content glass-panel">
+            <div class="timeline-body">
+              <p class="timeline-date">2024.08 ~ 2024.12</p>
+              <h3>언덕위의개들</h3>
+              <p class="timeline-role">Unity 개발자 / PD</p>
+              <p>2D 플랫포머 1 VS 1 대전 게임 '아르르! 야르르!' 개발<br>
+                Photon Fusion 2 기반의 네트워크 프로그래밍<br>
+                추가 네트워크 오브젝트 물리 프레임워크 개발<br>
+                일정관리, 업무지시, 보고서 작성 등의 PD 업무 수행</p>
+            </div>
+            <div class="timeline-logo">
+              <img src="assets/logos/dogs-on-hill.png" alt="언덕위의개들" loading="lazy"
+                onerror="this.parentElement.style.display='none'">
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-badge"></div>
+          <div class="timeline-content glass-panel">
+            <div class="timeline-body">
+              <p class="timeline-date">2024.03 ~ 2024.07</p>
+              <h3>바다의보배</h3>
+              <p class="timeline-role">Unity 개발자 / 클라이언트 → PD</p>
+              <p>3D 액션 어드벤처 게임 '창해유주' 개발<br>
+                Pure C# 활용 인 게임 보스 오디오 패턴 에디터 개발<br>
+                플레이어 FSM, 오디오 시퀀스, NavMesh 개발 등<br>
+                3D 모델 물리 최적화, 커스텀 내·외적 슬로프 구축</p>
+            </div>
+            <div class="timeline-logo">
+              <img src="assets/logos/sea-treasure.png" alt="바다의보배" loading="lazy"
+                onerror="this.parentElement.style.display='none'">
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-badge"></div>
+          <div class="timeline-content glass-panel">
+            <div class="timeline-body">
+              <p class="timeline-date">2023.09 ~ 2023.11</p>
+              <h3>어둠의자식들</h3>
+              <p class="timeline-role">Unity 개발자 / 클라이언트</p>
+              <p>2D 플랫포머 퍼즐 게임 'Loving My Devil' 개발<br>
+                플레이어 컨트롤러 제작, 핵심 진행도 시스템 개발<br>
+                FMOD 시퀀스 기반의 IMUSE 오디오 패턴 제작<br>
+                각종 사운드 리소스 작곡, 인 게임 사운드 시스템 제작</p>
+            </div>
+            <div class="timeline-logo">
+              <img src="assets/logos/dark-children.png" alt="어둠의자식들" loading="lazy"
+                onerror="this.parentElement.style.display='none'">
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-badge"></div>
+          <div class="timeline-content glass-panel">
+            <div class="timeline-body">
+              <p class="timeline-date">2018 ~ 2021.11</p>
+              <h3>Various Team</h3>
+              <p class="timeline-role">Unity 개발자 / 클라이언트 / 사운드 디자이너</p>
+              <p>2D 보스파이트 '트리큘러스' 사운드 참여<br>
+                보드 게임 '과탑은 나야 나!' 클라이언트, 사운드 참여<br>
+                2D 리듬 탄막게임 'Error Log' 1인 개발<br>
+                2D 플랫포머 VVVVVV 워크샵 포럼 클라이언트 참여</p>
+            </div>
+            <div class="timeline-logo">
+              <img src="assets/logos/various.png" alt="Various Team" loading="lazy"
+                onerror="this.parentElement.style.display='none'">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================
+     PROJECTS  (data/projects.js 에서 수정)
+     ============================= -->
+  <section id="projects" class="section-padding fade-in-section">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="games">Games</button>
+        <button class="filter-btn" data-filter="lab">SDK Lab</button>
+      </div>
+      <div class="projects-grid" id="projectsGrid">
+        <!-- scripts/projects.js 가 data/projects.js 를 읽어 렌더링 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================
+     OPEN SOURCE LAB  (data/opensource.js 에서 수정)
+     ============================= -->
+  <section id="opensource" class="section-padding fade-in-section">
+    <div class="container">
+      <h2 class="section-title">Open Source Lab</h2>
+      <div class="lab-directory-wrapper">
+        <div class="lab-toolbar">
+          <div class="lab-search-box">
+            <input type="text" id="labSearch" placeholder="라이브러리 검색...">
+            <svg class="lab-search-icon" viewBox="0 0 24 24">
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            </svg>
+          </div>
+          <div class="lab-filters">
+            <button class="lab-filter-btn active" data-lab-filter="all">All</button>
+            <button class="lab-filter-btn" data-lab-filter="utils">Utils / DI</button>
+            <button class="lab-filter-btn" data-lab-filter="editor">Editor</button>
+          </div>
+        </div>
+        <div class="lab-directory-grid" id="labGrid">
+          <!-- scripts/lab.js 가 data/opensource.js 를 읽어 렌더링 -->
+        </div>
+        <div class="lab-more-wrap">
+          <button class="btn btn-secondary" id="labMoreBtn" style="display:none;">더 보기</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================
+     CONTACT
+     ============================= -->
+  <section id="contact" class="section-padding fade-in-section contact-section">
+    <div class="container">
+      <div class="contact-card glass-panel">
+        <div class="contact-grid">
+
+          <div class="contact-info">
+            <h2>함께 만들어 봐요</h2>
+            <p>게임 개발, 성능 최적화, 에디터 툴 개발 등<br>협업이나 기술 문의는 언제든 환영합니다.</p>
+            <div class="contact-details-box">
+
+              <div class="contact-item">
+                <svg class="contact-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+                <div class="contact-text">
+                  <span class="contact-label">Email</span>
+                  <span class="contact-value" id="emailValue">gaunbabo1999@naver.com</span>
+                </div>
+                <button class="copy-btn" onclick="copyEmail()" aria-label="이메일 복사">
+                  <svg class="copy-icon" viewBox="0 0 24 24">
+                    <path
+                      d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                  </svg>
+                  <span class="copy-tooltip">복사하기</span>
+                </button>
+              </div>
+
+              <div class="contact-item">
+                <svg class="contact-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+                <div class="contact-text">
+                  <span class="contact-label">GitHub</span>
+                  <a class="contact-value" href="https://github.com/NightWish-0827" target="_blank"
+                    rel="noopener">NightWish-0827</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <svg class="contact-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+                </svg>
+                <div class="contact-text">
+                  <span class="contact-label">Blog</span>
+                  <a class="contact-value" href="https://nightwish-0827.github.io" target="_blank"
+                    rel="noopener">nightwish-0827.github.io</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="contact-form-box">
+            <h3>문의 보내기</h3>
+            <div class="form-group">
+              <label for="formName">이름</label>
+              <input type="text" id="formName" placeholder="홍길동" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="formEmail">이메일</label>
+              <input type="email" id="formEmail" placeholder="email@example.com" autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="formMsg">메시지</label>
+              <textarea id="formMsg" rows="4" placeholder="문의 내용을 입력하세요..."></textarea>
+            </div>
+            <button class="form-submit-btn" onclick="sendEmail()">
+              <svg class="send-icon" viewBox="0 0 24 24">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+              </svg>
+              보내기
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================
+     FOOTER
+     ============================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-copy">© 2024 황준혁 · All rights reserved.</p>
+        <div class="footer-links">
+          <a href="https://github.com/NightWish-0827" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://nightwish-0827.github.io" target="_blank" rel="noopener">Blog</a>
+          <a href="mailto:gaunbabo1999@naver.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =============================
+     MODAL
+     ============================= -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="프로젝트 상세">
+    <div class="modal-container glass-panel" id="modalContainer">
+      <button class="modal-close" id="modalClose" aria-label="닫기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- =============================
+     TOAST
+     ============================= -->
+  <div class="toast-notification" id="toastNotification" role="status" aria-live="polite">
+    <svg class="toast-success-icon" viewBox="0 0 24 24">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+    </svg>
+    <span id="toastMessage">이메일이 복사되었습니다!</span>
+  </div>
+
+  <!-- =============================
+     DATA (data/ 폴더에서 수정)
+     ============================= -->
+  <script src="data/skills.js"></script>
+  <script src="data/projects.js"></script>
+  <script src="data/opensource.js"></script>
+
+  <!-- =============================
+     SCRIPTS (scripts/ 폴더)
+     ============================= -->
+  <script src="scripts/navbar.js"></script>
+  <script src="scripts/animations.js"></script>
+  <script src="scripts/skills.js"></script>
+  <script src="scripts/projects.js"></script>
+  <script src="scripts/lab.js"></script>
+  <script src="scripts/modal.js"></script>
+  <script src="scripts/contact.js"></script>
+  <script src="scripts/main.js"></script>
+
+</body>
+
+</html>

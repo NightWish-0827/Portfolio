@@ -1,0 +1,240 @@
+/* lab.css — Open Source Lab */
+
+.lab-directory-wrapper {
+  border-top : 1px solid var(--glass-border);
+  padding-top: 50px;
+}
+
+/* 툴바 */
+.lab-toolbar {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+  gap            : 20px;
+  margin-bottom  : 36px;
+  flex-wrap      : wrap;
+}
+
+/* 검색 박스 */
+.lab-search-box {
+  position : relative;
+  flex-grow: 1;
+  max-width: 420px;
+  width    : 100%;
+}
+
+.lab-search-box input {
+  width        : 100%;
+  padding      : 12px 18px 12px 44px;
+  background   : rgba(10,12,18,0.5);
+  border       : 1px solid var(--glass-border);
+  border-radius: 30px;
+  color        : var(--text-primary);
+  font-size    : 0.9rem;
+  font-family  : inherit;
+  outline      : none;
+  transition   : border-color var(--duration-base) var(--ease-out-expo),
+                 background   var(--duration-base) ease,
+                 box-shadow   var(--duration-base) ease;
+}
+
+.lab-search-box input:focus {
+  border-color: var(--accent-orange);
+  background  : rgba(10,12,18,0.85);
+  box-shadow  : 0 0 15px rgba(234,88,12,0.2);
+}
+
+.lab-search-icon {
+  position  : absolute;
+  left      : 16px; top: 50%;
+  transform : translateY(-50%);
+  width     : 16px; height: 16px;
+  fill      : var(--text-muted);
+  pointer-events: none;
+  transition: fill var(--duration-fast) ease;
+}
+
+.lab-search-box input:focus + .lab-search-icon { fill: var(--accent-orange); }
+
+/* 필터 버튼 */
+.lab-filters { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.lab-filter-btn {
+  background   : rgba(255,255,255,0.02);
+  border       : 1px solid var(--glass-border);
+  color        : var(--text-secondary);
+  padding      : 8px 20px;
+  border-radius: 20px;
+  font-family  : var(--font-heading);
+  font-weight  : 600;
+  font-size    : 0.8rem;
+  cursor       : pointer;
+  transition   : border-color var(--duration-base) var(--ease-out-expo),
+                 color        var(--duration-fast) ease,
+                 background   var(--duration-fast) ease;
+}
+.lab-filter-btn:hover  { border-color: var(--glass-border-focus); color: #ffffff; }
+.lab-filter-btn.active { background: #ffffff; color: #0a0a0a; border-color: #ffffff; }
+
+/* 디렉터리 그리드 */
+.lab-directory-grid {
+  display              : grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap                  : 20px;
+  margin-bottom        : 30px;
+}
+
+.dir-card {
+  display       : flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding       : 24px;
+  background    : var(--glass-bg);
+  border        : 1px solid var(--glass-border);
+  border-radius : 12px;
+  will-change   : transform;
+  transition    : transform     var(--duration-base) var(--ease-out-expo),
+                  border-color  var(--duration-base) var(--ease-out-expo),
+                  box-shadow    var(--duration-base) var(--ease-out-expo);
+}
+
+.dir-card:hover {
+  transform   : translateY(-3px);
+  border-color: var(--glass-border-focus);
+  box-shadow  : 0 10px 25px var(--glass-shadow);
+}
+
+.dir-card.hide-item { display: none !important; }
+
+/* 카드 헤더 */
+.dir-card-header {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : flex-start;
+  gap            : 15px;
+  margin-bottom  : 12px;
+}
+
+.dir-card-title-area {
+  display    : flex;
+  align-items: center;
+  gap        : 10px;
+}
+
+/* 카테고리 색 점 */
+.dir-card-badge-dot {
+  width        : 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink  : 0;
+}
+
+.dir-card[data-lab-category="editor"]   .dir-card-badge-dot {
+  background: var(--accent-purple);
+  box-shadow : 0 0 8px var(--accent-purple);
+}
+.dir-card[data-lab-category="utils"]    .dir-card-badge-dot {
+  background: var(--accent-orange);
+  box-shadow : 0 0 8px var(--accent-orange);
+}
+.dir-card[data-lab-category="graphics"] .dir-card-badge-dot {
+  background: var(--accent-cyan);
+  box-shadow : 0 0 8px var(--accent-cyan);
+}
+
+.dir-card h4 {
+  font-family   : var(--font-heading);
+  font-size     : 1.05rem;
+  font-weight   : 700;
+  color         : #ffffff;
+}
+
+/* 링크 버튼 */
+.dir-link-btn {
+  width        : 32px; height: 32px;
+  border-radius: 50%;
+  background   : rgba(255,255,255,0.03);
+  border       : 1px solid var(--glass-border);
+  display      : flex;
+  align-items  : center;
+  justify-content: center;
+  color        : var(--text-secondary);
+  flex-shrink  : 0;
+  transition   : background   var(--duration-fast) ease,
+                 border-color var(--duration-fast) ease,
+                 color        var(--duration-fast) ease;
+}
+
+.dir-link-btn:hover {
+  background  : rgba(255,255,255,0.08);
+  border-color: var(--glass-border-focus);
+  color       : #ffffff;
+}
+
+.dir-link-btn svg { width: 13px; height: 13px; }
+
+/* 설명 */
+.dir-card-desc {
+  font-size    : 0.85rem;
+  color        : var(--text-secondary);
+  line-height  : 1.5;
+  font-weight  : 300;
+  margin-bottom: 18px;
+  flex-grow    : 1;
+}
+
+/* 태그 */
+.dir-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.dir-card-tags span {
+  font-size    : 0.68rem;
+  font-weight  : 500;
+  padding      : 3px 8px;
+  background   : rgba(255,255,255,0.01);
+  border       : 1px solid var(--glass-border);
+  border-radius: 4px;
+  color        : var(--text-muted);
+}
+
+/* ── Wiki 버튼 ── */
+.dir-wiki-btn {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  gap            : 8px;
+  margin-top     : 18px;
+  padding        : 11px 0;
+  width          : 100%;
+  border-radius  : 10px;
+  border         : 1px solid rgba(6, 182, 212, 0.3);
+  background     : rgba(6, 182, 212, 0.05);
+  color          : var(--accent-cyan);
+  font-family    : var(--font-heading);
+  font-size      : 0.88rem;
+  font-weight    : 600;
+  text-decoration: none;
+  letter-spacing : 0.2px;
+  transition     : background var(--duration-fast) ease,
+                   border-color var(--duration-fast) ease,
+                   color var(--duration-fast) ease;
+}
+
+.dir-wiki-btn:hover {
+  background  : rgba(6, 182, 212, 0.12);
+  border-color: rgba(6, 182, 212, 0.6);
+  color       : #fff;
+}
+
+.dir-wiki-btn svg {
+  width     : 16px;
+  height    : 16px;
+  flex-shrink: 0;
+}
+
+.lab-more-wrap { text-align: center; margin-top: 8px; }
+
+/* 반응형 */
+@media (max-width: 900px)  { .lab-directory-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px)  {
+  .lab-toolbar { flex-direction: column; align-items: flex-start; }
+  .lab-search-box { max-width: 100%; }
+}

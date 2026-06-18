@@ -1,0 +1,385 @@
+/* projects.css — Projects 그리드 + 모달 */
+
+/* ── 그리드 ── */
+.projects-grid {
+  display              : grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap                  : 30px;
+}
+
+.project-card {
+  display       : flex;
+  flex-direction: column;
+  height        : 100%;
+  overflow      : hidden;
+  transition    : border-color  var(--duration-base) var(--ease-out-expo),
+                  box-shadow    var(--duration-base) var(--ease-out-expo);
+}
+
+.project-card:hover {
+  box-shadow  : 0 12px 30px rgba(0,0,0,0.6);
+  border-color: var(--glass-border-focus);
+}
+
+.project-card.hide { display: none; }
+
+.project-card-meta {
+  padding       : 30px;
+  display       : flex;
+  flex-direction: column;
+  flex-grow     : 1;
+}
+
+.project-card-meta h3 {
+  font-family  : var(--font-heading);
+  font-size    : 1.2rem;
+  font-weight  : 700;
+  margin-bottom: 12px;
+}
+
+.project-desc {
+  font-size    : 0.88rem;
+  color        : var(--text-secondary);
+  margin-bottom: 20px;
+  font-weight  : 300;
+  line-height  : 1.6;
+  flex-grow    : 1;
+}
+
+.project-stack {
+  display      : flex;
+  flex-wrap    : wrap;
+  gap          : 8px;
+  margin-bottom: 25px;
+}
+
+.project-stack span {
+  font-size    : 0.72rem;
+  padding      : 4px 10px;
+  background   : rgba(255,255,255,0.02);
+  border       : 1px solid var(--glass-border);
+  border-radius: 4px;
+  color        : var(--text-secondary);
+}
+
+.project-actions {
+  display      : flex;
+  gap          : 15px;
+  margin-top   : auto;
+  border-top   : 1px solid var(--glass-border);
+  padding-top  : 15px;
+  flex-wrap    : wrap;
+}
+
+.project-link {
+  font-family: var(--font-heading);
+  font-size  : 0.85rem;
+  font-weight: 600;
+  display    : inline-flex;
+  align-items: center;
+  gap        : 4px;
+  color      : var(--text-secondary);
+  cursor     : pointer;
+  background : none;
+  border     : none;
+  padding    : 0;
+  transition : color var(--duration-fast) ease;
+}
+
+.project-card:hover .project-link { color: #ffffff; }
+
+.project-arrow-icon {
+  width     : 14px; height: 14px;
+  transition: transform var(--duration-fast) ease;
+}
+
+.project-card:hover .project-arrow-icon { transform: translate(2px,-2px); }
+
+/* ── 카드 썸네일 ── */
+.project-thumb-wrap {
+  position     : relative;
+  width        : 100%;
+  aspect-ratio : 16 / 9;
+  overflow     : hidden;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.project-thumb {
+  width     : 100%;
+  height    : 100%;
+  object-fit: cover;
+  display   : block;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-thumb-overlay { display: none; }
+
+.project-card:hover .project-thumb { transform: scale(1.04); }
+
+/* ── 모달 로컬 영상 ── */
+.modal-video-wrapper video {
+  width         : 100%;
+  border-radius : 8px;
+  display       : block;
+}
+
+/* ── 모달 갤러리 ── */
+.modal-gallery {
+  display              : grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap                  : 8px;
+  margin-bottom        : 20px;
+  margin-top           : 20px;
+}
+
+.modal-gallery img {
+  width        : 100%;
+  aspect-ratio : 16 / 9;
+  object-fit   : cover;
+  border-radius: 6px;
+  display      : block;
+  border       : 1px solid var(--glass-border);
+  transition   : opacity 0.2s ease;
+}
+
+.modal-gallery img:hover { opacity: 0.85; cursor: zoom-in; }
+
+@media (max-width: 600px) { .modal-gallery { grid-template-columns: repeat(2,1fr); } }
+
+/* ── 모달 ── */
+.modal-overlay {
+  position  : fixed;
+  inset     : 0;
+  background: rgba(5,5,5,0.92);
+  z-index   : 2000;
+  display   : flex;
+  align-items: center;
+  justify-content: center;
+  opacity        : 0;
+  pointer-events : none;
+  transition     : opacity 0.3s ease;
+}
+
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+
+.modal-container {
+  width      : 90%;
+  max-width  : 760px;
+  max-height : 90vh;
+  overflow-y : auto;
+  border-radius: 16px;
+  padding    : 35px;
+  position   : relative;
+  transform  : scale(0.95);
+  transition : transform var(--duration-base) var(--ease-out-expo);
+}
+
+.modal-overlay.active .modal-container { transform: scale(1); }
+
+.modal-close {
+  position     : absolute;
+  top: 20px; right: 20px;
+  width        : 32px; height: 32px;
+  border-radius: 50%;
+  background   : rgba(255,255,255,0.03);
+  border       : 1px solid var(--glass-border);
+  display      : flex;
+  align-items  : center;
+  justify-content: center;
+  cursor       : pointer;
+  transition   : background var(--duration-fast) ease;
+}
+.modal-close:hover { background: rgba(255,255,255,0.08); }
+.modal-close svg   { width: 14px; height: 14px; }
+
+.modal-body h2 {
+  font-family  : var(--font-heading);
+  font-size    : 1.8rem;
+  font-weight  : 800;
+  margin-bottom: 5px;
+}
+
+.modal-subtitle {
+  font-family   : var(--font-heading);
+  font-size     : 0.78rem;
+  font-weight   : 600;
+  color         : var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom : 20px;
+}
+
+.modal-video-wrapper {
+  border-radius : 8px;
+  overflow      : hidden;
+  background    : #000;
+  margin-bottom : 25px;
+}
+
+/* ── YouTube 썸네일 링크 (임베드 불가 영상 대체) ── */
+.modal-yt-thumb {
+  display      : block;
+  position     : relative;
+  border-radius: 8px;
+  overflow     : hidden;
+  margin-bottom: 25px;
+  aspect-ratio : 16 / 9;
+  background   : #000;
+  text-decoration: none;
+}
+
+.modal-yt-thumb img {
+  width     : 100%;
+  height    : 100%;
+  object-fit: cover;
+  display   : block;
+  transition: opacity 0.2s ease;
+}
+
+.modal-yt-thumb:hover img { opacity: 0.75; }
+
+.modal-yt-play {
+  position       : absolute;
+  inset          : 0;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  pointer-events : none;
+}
+
+.modal-yt-play svg {
+  width     : 68px;
+  height    : 48px;
+  filter    : drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+  transition: transform 0.2s ease;
+}
+
+.modal-yt-thumb:hover .modal-yt-play svg { transform: scale(1.1); }
+
+.modal-yt-label {
+  position        : absolute;
+  bottom          : 12px;
+  right           : 14px;
+  font-size       : 0.75rem;
+  font-family     : var(--font-heading);
+  font-weight     : 600;
+  color           : rgba(255,255,255,0.85);
+  background      : rgba(0,0,0,0.55);
+  padding         : 3px 10px;
+  border-radius   : 4px;
+  letter-spacing  : 0.3px;
+  pointer-events  : none;
+}
+
+/* YouTube iframe — 16:9 비율 유지 */
+.modal-video-wrapper:has(iframe) {
+  position      : relative;
+  padding-bottom: 56.25%;
+  height        : 0;
+}
+
+.modal-video-wrapper iframe {
+  position: absolute;
+  inset   : 0;
+  width   : 100%; height: 100%;
+  border  : none;
+}
+
+/* 로컬 video — 자연 비율 */
+.modal-video-wrapper video {
+  width        : 100%;
+  display      : block;
+  border-radius: 8px;
+}
+
+/* 세로 영상 (모바일 게임) */
+.modal-video-wrapper.portrait {
+  max-width: 320px;
+  margin   : 0 auto 25px;
+}
+
+.modal-video-wrapper.portrait video {
+  max-height: 65vh;
+  width     : auto;
+  margin    : 0 auto;
+}
+
+.modal-meta-grid {
+  display              : grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap                  : 15px;
+  margin-bottom        : 25px;
+  padding              : 15px;
+  background           : rgba(255,255,255,0.01);
+  border               : 1px solid var(--glass-border);
+  border-radius        : 8px;
+}
+
+.modal-meta-item h4 {
+  font-family   : var(--font-heading);
+  font-size     : 0.75rem;
+  font-weight   : 600;
+  color         : var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom : 3px;
+}
+
+.modal-meta-item p { font-size: 0.88rem; }
+
+.modal-text-section { margin-bottom: 20px; }
+
+.modal-text-section h3 {
+  font-family  : var(--font-heading);
+  font-size    : 1.05rem;
+  font-weight  : 700;
+  margin-bottom: 10px;
+}
+
+.modal-text-section p {
+  font-size  : 0.88rem;
+  color      : var(--text-secondary);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.modal-text-section ul {
+  list-style : disc;
+  padding-left: 20px;
+  color       : var(--text-secondary);
+  font-size   : 0.88rem;
+  font-weight : 300;
+}
+
+.modal-text-section li { margin-bottom: 8px; line-height: 1.55; }
+
+/* ── 이미지 라이트박스 ── */
+#imgLightbox {
+  position       : fixed;
+  inset          : 0;
+  background     : rgba(0, 0, 0, 0.93);
+  z-index        : 3000;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  opacity        : 0;
+  pointer-events : none;
+  transition     : opacity 0.2s ease;
+  cursor         : zoom-out;
+}
+
+#imgLightbox.active {
+  opacity       : 1;
+  pointer-events: all;
+}
+
+#imgLightbox img {
+  max-width    : 90vw;
+  max-height   : 90vh;
+  object-fit   : contain;
+  border-radius: 4px;
+  user-select  : none;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 1024px) { .projects-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 768px)  { .projects-grid { grid-template-columns: 1fr; } }

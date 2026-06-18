@@ -1,0 +1,198 @@
+/* hero.css */
+
+.hero {
+  min-height : 100vh;
+  display    : flex;
+  align-items: center;
+  justify-content: center;
+  position   : relative;
+  padding-top: 100px;
+  background : var(--bg-deep);
+  overflow   : hidden;
+}
+
+/* 도트 그리드 패턴 — 히어로에만 적용되는 깊이감 레이어 */
+.hero::before {
+  content    : '';
+  position   : absolute;
+  inset      : 0;
+  z-index    : 3;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size : 28px 28px;
+  mask-image : radial-gradient(ellipse 75% 75% at 50% 45%, black 10%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, black 10%, transparent 75%);
+  pointer-events: none;
+}
+
+/* 비디오 레이어 */
+.hero-video-bg {
+  position: absolute;
+  inset   : 0;
+  z-index : 1;
+}
+
+.hero-video-bg video {
+  width         : 100%; height: 100%;
+  object-fit    : cover;
+  pointer-events: none;
+  /* blur 없이 재생 — filter/backdrop-filter 모두 playing video 위에 적용 시
+   * 매 프레임 GPU 재합성 강제 → 스크롤 렉. 어두운 overlay로 시각적 대체 */
+}
+
+.hero-video-overlay {
+  position  : absolute;
+  inset     : 0;
+  background: rgba(10, 12, 18, 0.85);
+}
+
+/* 그라디언트 배경 (영상 없을 때 폴백 포함) */
+.hero-bg-gradient {
+  position  : absolute;
+  inset     : 0;
+  z-index   : 2;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 60%, rgba(6,182,212,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 80% 20%, rgba(139,92,246,0.05) 0%, transparent 60%);
+  /* will-change: opacity 제거 — opacity가 변하지 않는 정적 요소에 불필요한 GPU 레이어 생성 금지 */
+}
+
+/* 콘텐츠 */
+.hero-content {
+  text-align : center;
+  z-index    : 10;
+  max-width  : 800px;
+  padding    : 0 20px;
+  position   : relative;
+}
+
+.hero-tagline {
+  font-family   : var(--font-heading);
+  font-size     : 1rem;
+  font-weight   : 600;
+  color         : var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom : 20px;
+}
+
+.hero-title {
+  font-family   : var(--font-heading);
+  font-size     : 4.5rem;
+  font-weight   : 800;
+  line-height   : 1.1;
+  margin-bottom : 25px;
+  letter-spacing: -2px;
+}
+
+.hero-title span {
+  background             : linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip        : text;
+}
+
+.hero-desc {
+  font-size    : 1.1rem;
+  color        : var(--text-secondary);
+  margin-bottom: 35px;
+  font-weight  : 300;
+  line-height  : 1.7;
+}
+
+.hero-tags {
+  display        : flex;
+  justify-content: center;
+  gap            : 10px;
+  margin-bottom  : 40px;
+  flex-wrap      : wrap;
+}
+
+.hero-tag {
+  background   : rgba(255,255,255,0.02);
+  border       : 1px solid var(--glass-border);
+  padding      : 6px 16px;
+  border-radius: 20px;
+  font-size    : 0.83rem;
+  font-weight  : 500;
+  color        : var(--text-secondary);
+}
+
+.hero-actions {
+  display        : flex;
+  justify-content: center;
+  gap            : 15px;
+}
+
+/* 소셜 아이콘 */
+.hero-socials {
+  display        : flex;
+  justify-content: center;
+  gap            : 12px;
+  margin-top     : 40px;
+}
+
+.social-icon {
+  width        : 42px;
+  height       : 42px;
+  border-radius: 50%;
+  background   : var(--glass-bg);
+  border       : 1px solid var(--glass-border);
+  display      : flex;
+  align-items  : center;
+  justify-content: center;
+  transition   : transform var(--duration-base) var(--ease-out-expo),
+                 border-color var(--duration-base) var(--ease-out-expo),
+                 background   var(--duration-fast) ease;
+  will-change  : transform;
+}
+
+.social-icon:hover {
+  border-color: #52525b;
+  background  : rgba(255,255,255,0.05);
+  transform   : translateY(-2px);
+}
+
+.social-icon svg {
+  width : 18px; height: 18px;
+  fill  : var(--text-secondary);
+  transition: fill var(--duration-fast) ease;
+}
+
+.social-icon:hover svg { fill: #ffffff; }
+
+/* 스크롤 힌트 — 마우스 아이콘형 세로 직사각형 */
+.scroll-hint {
+  position      : absolute;
+  bottom        : 44px;
+  left          : 50%;
+  transform     : translateX(-50%);
+  z-index       : 10;
+  opacity       : 0.38;
+  pointer-events: none;
+}
+
+.scroll-mouse {
+  width          : 28px;
+  height         : 46px;
+  border         : 2px solid rgba(255, 255, 255, 0.5);
+  border-radius  : 14px;
+  display        : flex;
+  justify-content: center;
+  padding-top    : 8px;
+}
+
+.scroll-mouse-dot {
+  width        : 4px;
+  height       : 10px;
+  border-radius: 2px;
+  background   : rgba(255, 255, 255, 0.75);
+  animation    : scrollMouseDot 2.3s ease-in-out infinite;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .hero-title  { font-size: 2.8rem; letter-spacing: -1px; }
+  .hero-desc   { font-size: 1rem; }
+  .hero-actions { flex-direction: column; align-items: center; gap: 12px; }
+  .hero-actions .btn { width: 200px; }
+}

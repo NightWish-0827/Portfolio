@@ -1,0 +1,297 @@
+/* sections.css — Philosophy / Skills / Experience */
+
+/* ── Philosophy (3-column equal grid) ── */
+.philosophy-grid {
+  display              : grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap                  : 20px;
+}
+
+.phil-card {
+  background    : var(--glass-bg);
+  border        : 1px solid var(--glass-border);
+  border-radius : 20px;
+  padding       : 36px;
+  display       : flex;
+  flex-direction: column;
+  position      : relative;
+  overflow      : hidden;
+  transition    : border-color var(--duration-base) var(--ease-out-expo),
+                  box-shadow   var(--duration-base) var(--ease-out-expo);
+}
+
+.phil-card::before {
+  content        : '';
+  position       : absolute;
+  top            : 0; left: 0; right: 0;
+  height         : 2px;
+  background     : var(--accent-gradient);
+  border-radius  : 20px 20px 0 0;
+  transform      : scaleX(0);
+  transform-origin: left;
+  transition     : transform var(--duration-base) var(--ease-out-expo);
+}
+
+.phil-card:hover::before { transform: scaleX(1); }
+
+.phil-card:hover {
+  border-color: var(--glass-border-focus);
+  box-shadow  : var(--card-glow);
+}
+
+.phil-icon {
+  width          : 48px; height: 48px;
+  border-radius  : 14px;
+  background     : rgba(6, 182, 212, 0.06);
+  border         : 1px solid rgba(6, 182, 212, 0.18);
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  margin-bottom  : 26px;
+  flex-shrink    : 0;
+  transition     : background   var(--duration-base) ease,
+                   border-color var(--duration-base) ease;
+}
+
+.phil-card:hover .phil-icon {
+  background  : rgba(6, 182, 212, 0.11);
+  border-color: rgba(6, 182, 212, 0.38);
+}
+
+.phil-icon svg { width: 22px; height: 22px; fill: var(--accent-cyan); }
+
+.phil-card h3 {
+  font-family  : var(--font-heading);
+  font-size    : 1.25rem;
+  font-weight  : 700;
+  margin-bottom: 14px;
+  letter-spacing: -0.3px;
+}
+
+.phil-card p {
+  font-size  : 0.9rem;
+  color      : var(--text-secondary);
+  line-height: 1.9;
+  font-weight: 300;
+}
+
+/* ── Skills (Tech Stack) ── */
+.tech-grid {
+  display              : grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap                  : 20px;
+}
+
+.tech-card {
+  padding       : 28px;
+  display       : flex;
+  flex-direction: column;
+  position      : relative;
+  overflow      : hidden;
+}
+
+.tech-card::before {
+  content        : '';
+  position       : absolute;
+  top            : 0; left: 0; right: 0;
+  height         : 2px;
+  background     : var(--accent-gradient);
+  border-radius  : 16px 16px 0 0;
+  transform      : scaleX(0);
+  transform-origin: left;
+  transition     : transform var(--duration-base) var(--ease-out-expo);
+}
+
+.tech-card:hover::before { transform: scaleX(1); }
+
+.tech-card h3 {
+  font-family   : var(--font-heading);
+  font-size     : 0.72rem;
+  font-weight   : 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color         : var(--text-muted);
+  margin-bottom : 16px;
+  border-bottom : 1px solid var(--glass-border);
+  padding-bottom: 12px;
+}
+
+.tech-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.tech-item {
+  padding      : 4px 10px;
+  background   : rgba(255, 255, 255, 0.02);
+  border       : 1px solid var(--glass-border);
+  border-radius: 6px;
+  font-size    : 0.75rem;
+  font-family  : var(--font-mono);
+  color        : var(--text-secondary);
+  transition   : background    var(--duration-fast) ease,
+                 color         var(--duration-fast) ease,
+                 border-color  var(--duration-fast) ease;
+}
+
+.tech-item:hover {
+  background  : rgba(6, 182, 212, 0.07);
+  color       : var(--accent-cyan);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+/* ── Experience Timeline (left-aligned) ── */
+.timeline {
+  position : relative;
+  max-width: 860px;
+  margin   : 50px auto 0;
+  padding  : 10px 0 30px;
+}
+
+/* gradient 세로선: left=28px, width=2px → center=29px */
+.timeline::before {
+  content      : '';
+  position     : absolute;
+  left         : 28px; top: 0;
+  width        : 2px; height: 100%;
+  background   : linear-gradient(
+    to bottom,
+    var(--accent-cyan)   0%,
+    var(--accent-purple) 65%,
+    transparent          100%
+  );
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position     : relative;
+  margin-bottom: 40px;
+  width        : 100%;
+  padding      : 0 0 0 80px;
+  left         : 0 !important;
+  text-align   : left !important;
+}
+
+/* 뱃지 중심 = 라인 중심(29px): left = 29 - 8 = 21px */
+.timeline-badge {
+  position     : absolute;
+  top          : 18px;
+  left         : 21px !important;
+  right        : auto !important;
+  width        : 16px; height: 16px;
+  border-radius: 50%;
+  background   : var(--bg-deep);
+  border       : 2px solid var(--glass-border-focus);
+  z-index      : 10;
+  transition   : border-color var(--duration-base) ease,
+                 box-shadow   var(--duration-base) ease;
+}
+
+.timeline-item:first-child .timeline-badge {
+  border-color: var(--accent-cyan);
+  box-shadow  : 0 0 0 4px rgba(6, 182, 212, 0.12),
+                0 0 14px rgba(6, 182, 212, 0.25);
+}
+
+.timeline-item:hover .timeline-badge {
+  border-color: var(--accent-cyan);
+  box-shadow  : 0 0 0 4px rgba(6, 182, 212, 0.1);
+}
+
+/* 카드 내부: body + logo flex 레이아웃 */
+.timeline-content {
+  position  : relative;
+  overflow  : hidden;
+  padding   : 24px 28px 24px 32px;
+  display   : flex;
+  gap       : 20px;
+  align-items: flex-start;
+}
+
+.timeline-body {
+  flex    : 1;
+  min-width: 0;
+}
+
+.timeline-logo {
+  flex-shrink  : 0;
+  width        : 140px;
+  height       : 140px;
+  border-radius: 20px;
+  overflow     : hidden;
+  background   : rgba(255, 255, 255, 0.04);
+  border       : 1px solid var(--glass-border);
+  display      : flex;
+  align-items  : center;
+  justify-content: center;
+  align-self   : center;
+}
+
+.timeline-logo img {
+  width     : 100%;
+  height    : 100%;
+  object-fit: contain;
+  padding   : 8px;
+}
+
+.timeline-content::before {
+  content      : '';
+  position     : absolute;
+  left         : 0; top: 18px; bottom: 18px;
+  width        : 3px;
+  background   : linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple));
+  border-radius: 0 2px 2px 0;
+  opacity      : 0.3;
+  transition   : opacity var(--duration-base) ease;
+}
+
+.timeline-item:hover .timeline-content::before { opacity: 0.75; }
+
+.timeline-date {
+  font-family   : var(--font-mono);
+  font-size     : 0.72rem;
+  font-weight   : 400;
+  color         : var(--accent-cyan);
+  letter-spacing: 0.5px;
+  margin-bottom : 6px;
+  opacity       : 0.85;
+}
+
+.timeline-body h3 {
+  font-family  : var(--font-heading);
+  font-size    : 1.15rem;
+  font-weight  : 700;
+  margin-bottom: 4px;
+}
+
+.timeline-role {
+  font-size    : 0.85rem;
+  font-weight  : 500;
+  color        : var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.timeline-body p:last-child {
+  font-size  : 0.85rem;
+  color      : var(--text-muted);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 1024px) {
+  .tech-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .tech-grid { grid-template-columns: 1fr; }
+
+  .philosophy-grid { grid-template-columns: 1fr; }
+
+  .timeline-item    { padding-left: 60px; }
+  .timeline::before { left: 16px; }
+  /* 모바일: center=17px → left=17-8=9px */
+  .timeline-badge   { left: 9px !important; }
+
+  .timeline-logo {
+    width : 96px;
+    height: 96px;
+  }
+}

@@ -1,0 +1,114 @@
+/* navbar.css */
+
+/* navbar 은 실제로 배경이 비쳐야 하므로 backdrop-filter 유지 */
+.navbar {
+  position    : fixed;
+  top         : 20px;
+  left        : 50%;
+  transform   : translateX(-50%);
+  width       : 90%;
+  max-width   : 1000px;
+  height      : 60px;
+  z-index     : 1000;
+  display     : flex;
+  align-items : center;
+  justify-content: space-between;
+  padding     : 0 30px;
+  border-radius: 16px;
+  border       : 1px solid var(--glass-border);
+  background   : rgba(24, 24, 27, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition   : background 0.4s ease, box-shadow 0.4s ease;
+  will-change  : background;
+}
+
+.navbar.scrolled {
+  background : rgba(18, 18, 21, 0.97);
+  box-shadow : 0 4px 24px rgba(0,0,0,0.5);
+}
+
+.nav-logo {
+  font-family   : var(--font-heading);
+  font-size     : 1.3rem;
+  font-weight   : 800;
+  letter-spacing: -0.5px;
+  color         : #ffffff;
+  flex-shrink   : 0;
+}
+
+.nav-links {
+  display    : flex;
+  gap        : 26px;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family : var(--font-heading);
+  font-size   : 0.87rem;
+  font-weight : 500;
+  color       : var(--text-secondary);
+  position    : relative;
+  padding     : 5px 0;
+  transition  : color var(--duration-fast) ease;
+}
+
+.nav-links a::after {
+  content   : '';
+  position  : absolute;
+  bottom    : 0; left: 0;
+  width     : 0; height: 2px;
+  background: #ffffff;
+  transition: width var(--duration-base) var(--ease-out-expo);
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: #ffffff; }
+
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 100%; }
+
+/* 햄버거 */
+.menu-toggle {
+  display       : none;
+  flex-direction: column;
+  gap           : 5px;
+  cursor        : pointer;
+  z-index       : 1001;
+}
+
+.menu-toggle span {
+  width      : 25px;
+  height     : 2px;
+  background : #ffffff;
+  display    : block;
+  transition : transform var(--duration-base) var(--ease-out-expo),
+               opacity   var(--duration-fast) ease;
+}
+
+/* 모바일 열림 상태 */
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+
+  .nav-links {
+    position  : fixed;
+    top       : -100vh; left: 0;
+    width     : 100vw; height: 100vh;
+    background: rgba(9,9,11,0.98);
+    flex-direction: column;
+    justify-content: center;
+    gap       : 36px;
+    transition: top var(--duration-base) var(--ease-out-expo);
+    z-index   : 999;
+  }
+  .nav-links.active { top: 0; }
+  .nav-links a { font-size: 1.25rem; }
+
+  .navbar.active .menu-toggle span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .navbar.active .menu-toggle span:nth-child(2) { opacity: 0; }
+  .navbar.active .menu-toggle span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
