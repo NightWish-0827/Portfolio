@@ -8,18 +8,18 @@
 const skillsData = [
   {
     title: 'Languages',
-    items: ['C#', 'Unity Native', 'Mono', 'HLSL', 'ETC..'],
+    items: ['C#', 'C++', 'Mono', 'HLSL',],
   },
   {
     title: 'Engine & Runtime',
-    items: ['Unity', 'URP', 'Profilers', 'Addressables', 'ETC..'],
+    items: ['Unity', 'Profilers',  'URP', 'Addressables',],
   },
   {
     title: 'Frameworks & SDKs',
-    items: ['UniTask', 'DOTween', 'R3','FMOD', 'ETC..'],
+    items: ['UniTask', 'DOTween', 'R3','FMOD',],
   },
   {
     title: 'Infra & DevOps',
-    items: ['Git', 'Firebase', 'CI/CD', '뒤끝', 'ETC..'],
+    items: ['Git', 'Firebase', '뒤끝', ],
   },
 ];
