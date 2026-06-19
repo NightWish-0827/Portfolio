@@ -21,7 +21,7 @@ const openSourceData = [
     tags: ['Unity', 'C#', 'Roslyn', 'DI', 'IL2CPP', 'UPM'],
     url: 'https://github.com/NightWish-0827/UNInject',
     wikiUrl: 'https://nightwish-0827.github.io/UNInject/',
-    docsUrl: 'https://nightwish-0827.github.io/sdks/uninject/',
+    docsUrl: 'https://nightwish-0827.github.io/UNInject/',
   },
   {
     id: 'r3s',
@@ -33,7 +33,7 @@ const openSourceData = [
     tags: ['Unity', 'C#', 'R3', 'Roslyn', 'Reactive', 'UPM'],
     url: 'https://github.com/NightWish-0827/R3S',
     wikiUrl: 'https://nightwish-0827.github.io/R3S/',
-    docsUrl: 'https://nightwish-0827.github.io/sdks/r3s/',
+    docsUrl: 'https://nightwish-0827.github.io/R3S/',
   },
   {
     id: 'powerpool',
